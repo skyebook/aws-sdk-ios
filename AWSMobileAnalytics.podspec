@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => 'https://github.com/aws/aws-sdk-ios.git',
                      :tag => s.version}
   s.requires_arc = true
-  s.dependency 'AWSCore', {:git => 'https://github.com/skyebook/aws-sdk-ios.git'}
+  s.dependency 'AWSCore', '2.2.7'
 
   s.source_files = 'AWSMobileAnalytics/*.{h,m}', 'AWSMobileAnalytics/**/*.{h,m}'
   s.private_header_files = 'AWSMobileAnalytics/Internal/*.h'
