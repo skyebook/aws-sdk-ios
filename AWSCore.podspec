@@ -18,4 +18,6 @@ Pod::Spec.new do |s|
 
   s.source_files = 'AWSCore/*.{h,m}', 'AWSCore/**/*.{h,m}'
   s.private_header_files = 'AWSCore/FMDB/**/*.h', 'AWSCore/GZIP/**/*.h', 'AWSCore/Reachability/**/*.h', 'AWSCore/TMCache/**/*.h', 'AWSCore/UICKeyChainStore/**/*.h', 'AWSCore/XMLDictionary/**/*.h', 'AWSCore/XMLWriter/**/*.h'
+  
+  s.tvos.deployment_target = '9.0'
 end
