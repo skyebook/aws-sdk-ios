@@ -293,8 +293,8 @@ handleEventsForBackgroundURLSession:(NSString *)identifier
 /**
  Assigns progress feedback and completion handler blocks. This method should be called when the app was suspended while the transfer is still happening.
 
- @param uploadBlocksAssigner   The block for assigning the upload pregree feedback and completion handler blocks.
- @param downloadBlocksAssigner The block for assigning the download pregree feedback and completion handler blocks.
+ @param uploadBlocksAssigner   The block for assigning the upload progress feedback and completion handler blocks.
+ @param downloadBlocksAssigner The block for assigning the download progress feedback and completion handler blocks.
  */
 - (void)enumerateToAssignBlocksForUploadTask:(nullable void (^)(AWSS3TransferUtilityUploadTask *uploadTask,
                                                                 AWSS3TransferUtilityUploadProgressBlock * __nullable uploadProgressBlockReference,
