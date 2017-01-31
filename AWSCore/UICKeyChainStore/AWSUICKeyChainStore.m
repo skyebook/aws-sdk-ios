@@ -992,6 +992,7 @@ static NSString *_defaultService;
 
 - (void)setSharedPassword:(NSString *)password forAccount:(NSString *)account completion:(void (^)(NSError *error))completion
 {
+#ifndef TARGET_OS_TV
     NSString *domain = self.server.host;
     if (domain.length > 0) {
         SecAddSharedWebCredential((__bridge CFStringRef)domain, (__bridge CFStringRef)account, (__bridge CFStringRef)password, ^(CFErrorRef error) {
@@ -1005,6 +1006,7 @@ static NSString *_defaultService;
             completion(error);
         }
     }
+#endif
 }
 
 - (void)removeSharedPasswordForAccount:(NSString *)account completion:(void (^)(NSError *error))completion
@@ -1019,6 +1021,7 @@ static NSString *_defaultService;
 
 + (void)requestSharedWebCredentialForDomain:(NSString *)domain account:(NSString *)account completion:(void (^)(NSArray *credentials, NSError *error))completion
 {
+#ifndef TARGET_OS_TV
     SecRequestSharedWebCredential((__bridge CFStringRef)domain, (__bridge CFStringRef)account, ^(CFArrayRef credentials, CFErrorRef error) {
         if (error) {
             NSError *e = (__bridge NSError *)error;
@@ -1049,11 +1052,16 @@ static NSString *_defaultService;
             completion(sharedCredentials.copy, (__bridge NSError *)error);
         }
     });
+#endif
 }
 
 + (NSString *)generatePassword
 {
+#ifndef TARGET_OS_TV
     return CFBridgingRelease(SecCreateSharedWebCredentialPassword());
+#else 
+    [NSException raise:@"UnsupportedMethod" format:@"generatePassword unsupported on tvOS"];
+#endif
 }
 
 #endif
